@@ -1,0 +1,30 @@
+{
+  "home": "Home",
+  "quran_kareem": "Holy Quran",
+  "azkar": "Azkar & Supplications",
+  "namesAllah": "Names of Allah",
+  "namesProphet": "Names of the Prophet",
+  "praying": "Prayers & Sunnah",
+  "tasbih": "Tasbih",
+  "reciters": "Reciters",
+
+  "prophet_names": [
+    { "name": "Muhammad", "meaning": "Praised in his being and deeds" },
+    { "name": "Ahmad", "meaning": "Most praised and glorified" },
+    { "name": "Al-Mahi", "meaning": "He who wipes out disbelief by Allah" },
+    { "name": "Al-Hasher", "meaning": "People will be resurrected at his feet" },
+    { "name": "Al-Aaqib", "meaning": "The last prophet; no prophet comes after him" },
+    { "name": "Al-Fatih", "meaning": "Opens the doors of goodness and guidance for people" },
+    { "name": "Al-Shahid", "meaning": "Witnesses people in truth" },
+    { "name": "Al-Mussaddiq", "meaning": "Confirms and believes in Allah and His Messenger" },
+    { "name": "Al-Mujtaba", "meaning": "Chosen by Allah" },
+    { "name": "Al-Murtaza", "meaning": "Favored and accepted by Allah" },
+    { "name": "Al-Mustafa", "meaning": "Chosen by Allah" },
+    { "name": "Al-Muzzammil", "meaning": "Encouraged to spend the night in worship" },
+    { "name": "Al-Muddathir", "meaning": "Covers himself with a cloak" },
+    { "name": "The Prophet", "meaning": "Sent with Allah's message" },
+    { "name": "The Messenger", "meaning": "Sent to guide people" },
+    { "name": "Al-Sadiq", "meaning": "Truthful and trustworthy in speech" },
+    { "name": "Al-Amin", "meaning": "Trusted in covenants and message" }
+  ]
+}
