@@ -20,7 +20,9 @@ class GridviewHome extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       children: [
         gridItem(imageName: AppImages.reciters, name: 'Reciters'.tr(), onTap: (){}),
-        gridItem(imageName: AppImages.azkar, name: 'azkar'.tr(), onTap: (){}),
+        gridItem(imageName: AppImages.azkar, name: 'azkar'.tr(), onTap: (){
+          pushTo(context, Routes.azkar) ;
+        }),
         gridItem(imageName:AppImages.namesAllah, name: 'namesAllah'.tr(), onTap: (){
           pushTo(context, Routes.asmaaAllah) ;
         }),
