@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:islamic_app/core/routes/routes.dart';
+import 'package:islamic_app/core/utils/app_fonts.dart';
 
 
 
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       routerConfig: Routes.routes,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-
+        fontFamily: AppFonts.cairo,
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
       localizationsDelegates: context.localizationDelegates,
