@@ -12,7 +12,7 @@ Widget gridItem({required String imageName,required String name, required Functi
       padding: EdgeInsets.all(5) ,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10) ,
-        color: AppColors.primaryColor
+        border: BoxBorder.all(color: AppColors.brownColor)
 
       ),
       child: Column(

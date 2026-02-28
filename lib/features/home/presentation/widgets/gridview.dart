@@ -19,7 +19,7 @@ class GridviewHome extends StatelessWidget {
       shrinkWrap: true,
       physics: NeverScrollableScrollPhysics(),
       children: [
-        gridItem(imageName: AppImages.reciters, name: 'Reciters'.tr(), onTap: (){}),
+        gridItem(imageName: AppImages.reciters, name: 'reciters'.tr(), onTap: (){}),
         gridItem(imageName: AppImages.azkar, name: 'azkar'.tr(), onTap: (){
           pushTo(context, Routes.azkar) ;
         }),
@@ -30,7 +30,9 @@ class GridviewHome extends StatelessWidget {
           pushTo(context, Routes.asmaaMohamed);
         }),
         gridItem(imageName: AppImages.praying, name: 'praying'.tr(), onTap: (){}),
-        gridItem(imageName:AppImages.tasbih, name: 'tasbih'.tr(), onTap: (){}),
+        gridItem(imageName:AppImages.tasbih, name: 'tasbih'.tr(), onTap: (){
+          pushTo(context, Routes.sebha) ;
+        }),
 
 
 

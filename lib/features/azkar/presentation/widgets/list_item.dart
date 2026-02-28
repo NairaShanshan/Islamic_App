@@ -15,13 +15,15 @@ class ListItem extends StatelessWidget {
         padding: EdgeInsets.all(20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10) ,
-          color: AppColors.cardColor
+          color: Theme.of(context).cardColor ,
+          border: BoxBorder.all(color: AppColors.brownColor
+          )
         ),
         child: Row(
 
           children: [
             Expanded(child: Text(title , style: TextStyles.textStyle18, maxLines: 2, overflow: TextOverflow.ellipsis,)) ,
-            Icon(Icons.arrow_forward_ios_rounded) ,
+            Icon(Icons.arrow_forward_ios_rounded , color: AppColors.brownColor,) ,
           ],
         ),
       ),

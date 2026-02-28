@@ -2,7 +2,7 @@
 
 import 'package:dio/dio.dart';
 
-import 'api_endpoints.dart';
+
 
 class DioProvider {
   static late Dio dio;

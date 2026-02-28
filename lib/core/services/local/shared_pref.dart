@@ -1,4 +1,4 @@
-import 'dart:convert';
+
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,6 +10,7 @@ class SharedPref {
 
   static const kToken = 'token';
   static const kUserData = 'kUserData';
+  static const kDarkTheme = 'darkTheme';
 
   static init() async {
     prefs = await SharedPreferences.getInstance();
@@ -22,6 +23,15 @@ class SharedPref {
 
   static String? getToken() {
     return getData(kToken);
+  }
+
+
+  static setDarkTheme(bool isDark) {
+    prefs.setBool(kDarkTheme, isDark);
+  }
+
+  static bool isDarkTheme() {
+    return prefs.getBool(kDarkTheme) ?? false;
   }
 
   // static setUserData(User? user) {

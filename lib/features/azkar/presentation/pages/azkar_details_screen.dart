@@ -23,7 +23,10 @@ class AzkarDetailsScreen extends StatelessWidget {
               padding: EdgeInsets.all(15),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
-                color: AppColors.cardColor,
+                color: Theme.of(context).cardColor,
+                border: BoxBorder.all(
+                  color: AppColors.brownColor
+                )
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,12 +37,22 @@ class AzkarDetailsScreen extends StatelessWidget {
                     style: TextStyles.textStyle18,
                     textAlign: TextAlign.center,
                   ),
-                  Gap(8),
+                  Gap(15),
                   if (azkarList[index].description?.isNotEmpty ?? false)
-                    Text(
-                      azkarList[index].description!,
-                      style: TextStyles.textStyle16.copyWith(
-                        color: Colors.pink[900],
+                    Container(
+                      padding: EdgeInsets.all(7),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: BoxBorder.all(
+                          color: AppColors.brownColor
+                        ) ,
+                        color: Color(0xFFCFB8AA)
+                      ),
+                      child: Text(
+                        azkarList[index].description!,
+                        style: TextStyles.textStyle16.copyWith(
+                          color: Colors.pink[900],
+                        ),
                       ),
                     ),
                   if (azkarList[index].description?.isNotEmpty ?? false) Gap(8),
@@ -48,7 +61,7 @@ class AzkarDetailsScreen extends StatelessWidget {
                     children: [
                       Text(
                         azkarList[index].count?.isNotEmpty ?? false
-                            ? '${azkarList[index].count} مرات'
+                            ? '<${azkarList[index].count} مرات>'
                             : "",
                         style: TextStyles.textStyle14,
                       ),

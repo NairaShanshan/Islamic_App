@@ -7,6 +7,7 @@ class AppImages {
   static const String namesProphet = 'assets/images/prophet.png' ;
   static const String tasbih = 'assets/images/tasbih.png' ;
   static const String reciters = 'assets/images/man.png' ;
+  static const String background = 'assets/images/background.png' ;
 
 
 

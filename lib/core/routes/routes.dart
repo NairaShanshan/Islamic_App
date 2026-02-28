@@ -12,6 +12,7 @@ import 'package:islamic_app/features/azkar/presentation/cubit/cubit.dart';
 import 'package:islamic_app/features/azkar/presentation/pages/azkar_details_screen.dart';
 import 'package:islamic_app/features/azkar/presentation/pages/azkar_screen.dart';
 import 'package:islamic_app/features/home/presentation/pages/home_screen.dart';
+import 'package:islamic_app/features/sebha/presentation/pages/sebha_screen.dart';
 
 class Routes {
   static const String home = '/';
@@ -19,6 +20,7 @@ class Routes {
   static const String asmaaMohamed = '/asmaaMohamed';
   static const String azkar = '/azkar';
   static const String azkarDetails = '/azkarDetails';
+  static const String sebha = '/sebha';
 
   static final routes = GoRouter(
     initialLocation: home,
@@ -49,6 +51,10 @@ class Routes {
           return AzkarDetailsScreen(azkarList: azkarList) ;
         }
         ,
+      ),
+      GoRoute(
+        path: sebha,
+        builder: (context, state) => SebhaScreen(),
       ),
     ],
   );
