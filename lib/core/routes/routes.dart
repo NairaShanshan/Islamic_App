@@ -11,6 +11,8 @@ import 'package:islamic_app/features/azkar/data/services/azkar_service.dart';
 import 'package:islamic_app/features/azkar/presentation/cubit/cubit.dart';
 import 'package:islamic_app/features/azkar/presentation/pages/azkar_details_screen.dart';
 import 'package:islamic_app/features/azkar/presentation/pages/azkar_screen.dart';
+import 'package:islamic_app/features/hijri_calendar/presentation/cubit/calendar_cubit.dart';
+import 'package:islamic_app/features/hijri_calendar/presentation/pages/calendar_screen.dart';
 import 'package:islamic_app/features/home/presentation/pages/home_screen.dart';
 import 'package:islamic_app/features/sebha/presentation/pages/sebha_screen.dart';
 
@@ -21,6 +23,7 @@ class Routes {
   static const String azkar = '/azkar';
   static const String azkarDetails = '/azkarDetails';
   static const String sebha = '/sebha';
+  static const String calender = '/calender';
 
   static final routes = GoRouter(
     initialLocation: home,
@@ -36,25 +39,32 @@ class Routes {
       GoRoute(
         path: asmaaMohamed,
         builder: (context, state) => BlocProvider(
-          create: (context) => MohamedNamesCubit(MohamedNamesService())..getMohamedNames(),
-          child:  MohamedNamesScreen(),
+          create: (context) =>
+              MohamedNamesCubit(MohamedNamesService())..getMohamedNames(),
+          child: MohamedNamesScreen(),
         ),
       ),
       GoRoute(
         path: azkar,
-        builder: (context, state) => BlocProvider(create: (context) => AzkarCubit(AzkarService())..getAzkar() , child: const AzkarScreen()),
+        builder: (context, state) => BlocProvider(
+          create: (context) => AzkarCubit(AzkarService())..getAzkar(),
+          child: const AzkarScreen(),
+        ),
       ),
       GoRoute(
         path: azkarDetails,
         builder: (context, state) {
           final azkarList = state.extra as List<AzkarModel>;
-          return AzkarDetailsScreen(azkarList: azkarList) ;
-        }
-        ,
+          return AzkarDetailsScreen(azkarList: azkarList);
+        },
       ),
+      GoRoute(path: sebha, builder: (context, state) => SebhaScreen()),
       GoRoute(
-        path: sebha,
-        builder: (context, state) => SebhaScreen(),
+        path: calender,
+        builder: (context, state) => BlocProvider(
+          create: (context) => CalendarCubit()..loadCurrentMonth(),
+          child: CalendarScreen(),
+        ),
       ),
     ],
   );

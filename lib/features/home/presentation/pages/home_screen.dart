@@ -3,19 +3,23 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:islamic_app/core/constants/app_images.dart';
+import 'package:islamic_app/core/routes/navigations.dart';
+import 'package:islamic_app/core/routes/routes.dart';
 import 'package:islamic_app/core/theme_cubit/theme_cubit.dart';
 import 'package:islamic_app/core/utils/app_colors.dart';
 import 'package:islamic_app/core/utils/text_styles.dart';
+import 'package:islamic_app/features/hijri_calendar/data/services/hijri_service.dart';
 import 'package:islamic_app/features/home/presentation/widgets/gridview.dart';
-import 'package:hijri_date/hijri_date.dart';
+
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    HijriDate.setLocal("ar"); // حطيه مرة واحدة قبل build
-    HijriDate hijri = HijriDate.now();
+
+    final hijri = HijriService.getCurrentHijri();
+    final today = DateTime.now();
 
 
 
@@ -34,13 +38,27 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10) ,
+                  borderRadius: BorderRadius.circular(10),
 
                 ),
-                child: Text(hijri.toFormat("dd MMMM yyyy")),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      HijriService.formatHijriDate(hijri),
+                      style: TextStyles.textStyle20,
+                    ),
+                    const Gap(6),
+                    Text(
+                      HijriService.formatGregorianDate(today),
+                      style: TextStyles.textStyle16,
+                    ),
+                  ],
+                ),
               ),
+              Gap(25),
               GestureDetector(
                 onTap: (){},
                 child: Container(
@@ -65,7 +83,9 @@ class HomeScreen extends StatelessWidget {
               GridviewHome(),
               Gap(25),
               GestureDetector(
-                onTap: (){},
+                onTap: (){
+                  pushTo(context, Routes.calender) ;
+                },
                 child: Container(
                   width: double.infinity,
                   padding: EdgeInsets.all(10),
@@ -76,9 +96,10 @@ class HomeScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image.asset(AppImages.quran , width: 50, height: 50,) ,
+                     Icon(Icons.calendar_month_outlined , size: 35, color: AppColors.brownColor,) ,
                       Gap(10) ,
-                      Text('quran_kareem'.tr() , style: TextStyles.textStyle20,) ,
+                      Text(
+                      'calender'.tr(), style: TextStyles.textStyle20,) ,
                     ],
                   ),
                 ),

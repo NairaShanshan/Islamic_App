@@ -42,6 +42,7 @@ dependencies:
   easy_localization: ^3.0.8
   adhan_dart: ^1.2.0
   hijri_date: ^1.0.1
+  intl: ^0.20.2
 
 dev_dependencies:
   flutter_test:

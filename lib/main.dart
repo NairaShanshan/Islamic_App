@@ -6,11 +6,13 @@ import 'package:islamic_app/core/services/local/shared_pref.dart';
 import 'package:islamic_app/core/theme_cubit/theme_cubit.dart';
 import 'package:islamic_app/core/theme_cubit/theme_states.dart';
 import 'package:islamic_app/core/utils/themes.dart';
+import 'package:islamic_app/features/hijri_calendar/data/services/hijri_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await SharedPref.init();
+  HijriService.init() ;
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('ar'), Locale('en')],
