@@ -11,6 +11,9 @@ class SharedPref {
   static const kToken = 'token';
   static const kUserData = 'kUserData';
   static const kDarkTheme = 'darkTheme';
+  static const kLatitude = 'latitude';
+  static const kLongitude = 'longitude';
+
 
   static init() async {
     prefs = await SharedPreferences.getInstance();
@@ -32,6 +35,20 @@ class SharedPref {
 
   static bool isDarkTheme() {
     return prefs.getBool(kDarkTheme) ?? false;
+  }
+
+
+  static saveLocation(double lat, double lng) {
+    setData(kLatitude, lat);
+    setData(kLongitude, lng);
+  }
+
+  static double? getLatitude() {
+    return prefs.getDouble(kLatitude);
+  }
+
+  static double? getLongitude() {
+    return prefs.getDouble(kLongitude);
   }
 
   // static setUserData(User? user) {
