@@ -8,6 +8,8 @@ class NawafilList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.separated(
+      physics: NeverScrollableScrollPhysics(),
+      shrinkWrap: true,
       itemCount: 5,
       separatorBuilder: (context , index ) => Gap(10),
       itemBuilder: (context , index) {

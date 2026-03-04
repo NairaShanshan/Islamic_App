@@ -29,7 +29,9 @@ class GridviewHome extends StatelessWidget {
         gridItem(imageName: AppImages.namesProphet, name: 'namesProphet'.tr(), onTap: (){
           pushTo(context, Routes.asmaaMohamed);
         }),
-        gridItem(imageName: AppImages.praying, name: 'praying'.tr(), onTap: (){}),
+        gridItem(imageName: AppImages.praying, name: 'praying'.tr(), onTap: (){
+          pushTo(context, Routes.prayers) ;
+        }),
         gridItem(imageName:AppImages.tasbih, name: 'tasbih'.tr(), onTap: (){
           pushTo(context, Routes.sebha) ;
         }),

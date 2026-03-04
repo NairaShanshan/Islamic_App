@@ -14,7 +14,10 @@ import 'package:islamic_app/features/azkar/presentation/pages/azkar_screen.dart'
 import 'package:islamic_app/features/hijri_calendar/presentation/cubit/calendar_cubit.dart';
 import 'package:islamic_app/features/hijri_calendar/presentation/pages/calendar_screen.dart';
 import 'package:islamic_app/features/home/presentation/pages/home_screen.dart';
+import 'package:islamic_app/features/prayer_times/presentation/pages/prayers_screen.dart';
 import 'package:islamic_app/features/sebha/presentation/pages/sebha_screen.dart';
+
+
 
 class Routes {
   static const String home = '/';
@@ -24,6 +27,7 @@ class Routes {
   static const String azkarDetails = '/azkarDetails';
   static const String sebha = '/sebha';
   static const String calender = '/calender';
+  static const String prayers = '/prayers';
 
   static final routes = GoRouter(
     initialLocation: home,
@@ -65,6 +69,10 @@ class Routes {
           create: (context) => CalendarCubit()..loadCurrentMonth(),
           child: CalendarScreen(),
         ),
+      ),
+      GoRoute(
+        path: prayers,
+        builder: (context, state) => PrayersScreen(),
       ),
     ],
   );

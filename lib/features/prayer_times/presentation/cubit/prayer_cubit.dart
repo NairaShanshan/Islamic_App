@@ -1,45 +1,39 @@
+import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../../core/services/local/shared_pref.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:islamic_app/features/prayer_times/presentation/cubit/prayer_states.dart';
+
 import '../../data/services/location_service.dart';
 
+class PrayerTimesCubit extends Cubit<PrayerTimesStates> {
 
+  PrayerTimesCubit() : super(PrayerTimesInitialState()) ;
 
-abstract class LocationState {}
-
-class LocationInitial extends LocationState {}
-class LocationLoading extends LocationState {}
-class LocationSuccess extends LocationState {
-  final double lat;
-  final double lng;
-
-  LocationSuccess(this.lat, this.lng);
-}
-class LocationError extends LocationState {
-  final String message;
-  LocationError(this.message);
-}
-
-class LocationCubit extends Cubit<LocationState> {
-  LocationCubit() : super(LocationInitial());
-
-  Future<void> getAndSaveLocation() async {
-    emit(LocationLoading());
+  Future<void> loadPrayerTimes() async {
+    emit(PrayerTimesLoadingState());
 
     try {
-      final position = await LocationService.getCurrentLocation();
+      print("Requesting location...");
+      Position position = await LocationService.getCurrentLocation();
+      print("Position: ${position.latitude}, ${position.longitude}");
 
-      SharedPref.saveLocation(
-        position.latitude,
-        position.longitude,
-      );
+      final coordinates = Coordinates(position.latitude, position.longitude);
 
-      emit(LocationSuccess(
-        position.latitude,
-        position.longitude,
-      ));
+      final params = CalculationMethodParameters.egyptian();
+      params.madhab = Madhab.hanafi;
+
+      DateTime date = DateTime.now();
+
+      final prayerTimes = PrayerTimes(date: date, coordinates: coordinates, calculationParameters: params);
+
+      emit(PrayerTimesSuccessState(prayerTimes: prayerTimes));
+
 
     } catch (e) {
-      emit(LocationError(e.toString()));
+      print("Error getting location: $e");
+      emit(PrayerTimesErrorState(message: e.toString())) ;
     }
   }
+
+
 }
