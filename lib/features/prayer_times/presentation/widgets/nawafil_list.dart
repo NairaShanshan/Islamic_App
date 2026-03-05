@@ -7,12 +7,21 @@ class NawafilList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final nawafils = [
+      {'name': 'الفجر', 'count': '2 قبل الفريضه' },
+      {'name': 'الظهر', 'count': '4 قبل الفريضه و 2 بعدها'},
+      {'name': 'العصر', 'count': 'لا يوجد'},
+      {'name': 'المغرب', 'count': '2 بعد الفريضه'},
+      {'name': 'العشاء', 'count': '2 بعد الفريضه'},
+    ] ;
     return ListView.separated(
       physics: NeverScrollableScrollPhysics(),
       shrinkWrap: true,
       itemCount: 5,
       separatorBuilder: (context , index ) => Gap(10),
       itemBuilder: (context , index) {
+        final nawafil = nawafils[index] ;
         return  Container(
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
@@ -21,9 +30,8 @@ class NawafilList extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('الفجر' , style: TextStyles.textStyle20,),
-              Text(' 2 قبل' ,style: TextStyles.textStyle20, ),
-              Text('بعد 0' ,style: TextStyles.textStyle20, ),
+              Text(nawafil['name'] as String , style: TextStyles.textStyle20,),
+              Text(nawafil['count'] as String ,style: TextStyles.textStyle20, ),
             ],
           ),
         ) ;

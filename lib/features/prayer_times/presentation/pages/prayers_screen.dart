@@ -20,41 +20,38 @@ class PrayersScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
 
-    return  BlocProvider(
-      create: (context) => PrayerTimesCubit()..loadPrayerTimes(),
-      child: Scaffold(
-        appBar: AppBar(title: Text('praying'.tr()), centerTitle: true),
-        body: BlocBuilder< PrayerTimesCubit, PrayerTimesStates>(
-          builder: (context , state) {
-            if (state is PrayerTimesLoadingState) {
-              return Center(child: CircularProgressIndicator());
-            }else if (state is PrayerTimesErrorState) {
-              return Center(child: Text('Error: ${state.message}'));
-            }else if(state is PrayerTimesSuccessState) {
-              final prayers = state.prayerTimes;
-              return Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      PrayerHeader(prayerTimes: prayers,) ,
-                      Gap(20),
-                      PrayersList(prayerTimes: prayers,) ,
-                      Gap(20),
-                      Text('السنن والنوافل' , style: TextStyles.textStyle24,) ,
-                      NawafilList() ,
-                    ],
-                  ),
+    return  Scaffold(
+      appBar: AppBar(title: Text('praying'.tr()), centerTitle: true),
+      body: BlocBuilder< PrayerTimesCubit, PrayerTimesStates>(
+        builder: (context , state) {
+          if (state is PrayerTimesLoadingState) {
+            return Center(child: CircularProgressIndicator());
+          }else if (state is PrayerTimesErrorState) {
+            return Center(child: Text('Error: ${state.message}'));
+          }else if(state is PrayerTimesSuccessState) {
+            final prayers = state.prayerTimes;
+            return Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    PrayerHeader(prayerTimes: prayers,) ,
+                    Gap(20),
+                    PrayersList(prayerTimes: prayers,) ,
+                    Gap(20),
+                    Text('السنن والنوافل' , style: TextStyles.textStyle24,) ,
+                    NawafilList() ,
+                  ],
                 ),
-              );
-            }
-
-            return SizedBox();
-
+              ),
+            );
           }
 
-        ),
+          return SizedBox();
+
+        }
+
       ),
     );
   }

@@ -7,6 +7,7 @@ import 'package:islamic_app/core/theme_cubit/theme_cubit.dart';
 import 'package:islamic_app/core/theme_cubit/theme_states.dart';
 import 'package:islamic_app/core/utils/themes.dart';
 import 'package:islamic_app/features/hijri_calendar/data/services/hijri_service.dart';
+import 'package:islamic_app/features/prayer_times/presentation/cubit/prayer_cubit.dart';
 
 
 void main() async {
@@ -30,8 +31,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => ThemeCubit(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => ThemeCubit()) ,
+        BlocProvider(create: (context) => PrayerTimesCubit()..loadPrayerTimes())
+      ],
       child: BlocBuilder<ThemeCubit, ThemeStates>(
         builder: (context, state) {
           bool isDark = context.read<ThemeCubit>().isDarkTheme;
