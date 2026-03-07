@@ -12,6 +12,8 @@ import 'package:islamic_app/features/prayer_times/presentation/widgets/nawafil_l
 import 'package:islamic_app/features/prayer_times/presentation/widgets/prayer_header.dart';
 import 'package:islamic_app/features/prayer_times/presentation/widgets/prayers_list.dart';
 
+import '../../../../core/utils/app_colors.dart';
+
 
 class PrayersScreen extends StatelessWidget {
   const PrayersScreen({super.key});
@@ -25,7 +27,7 @@ class PrayersScreen extends StatelessWidget {
       body: BlocBuilder< PrayerTimesCubit, PrayerTimesStates>(
         builder: (context , state) {
           if (state is PrayerTimesLoadingState) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: AppColors.brownColor,));
           }else if (state is PrayerTimesErrorState) {
             return Center(child: Text('Error: ${state.message}'));
           }else if(state is PrayerTimesSuccessState) {
@@ -40,7 +42,10 @@ class PrayersScreen extends StatelessWidget {
                     Gap(20),
                     PrayersList(prayerTimes: prayers,) ,
                     Gap(20),
-                    Text('السنن والنوافل' , style: TextStyles.textStyle24,) ,
+                    Text('السنن والنوافل' , style: TextStyles.textStyle24.copyWith(
+                      color: AppColors.brownColor
+                    ),) ,
+                    Gap(20),
                     NawafilList() ,
                   ],
                 ),

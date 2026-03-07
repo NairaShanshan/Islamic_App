@@ -25,6 +25,9 @@ class LocationService {
       throw Exception("PERMISSION_DENIED_FOREVER");
     }
 
-    return await Geolocator.getCurrentPosition();
+    return await Geolocator.getCurrentPosition(locationSettings: LocationSettings(
+      accuracy: LocationAccuracy.high ,
+      distanceFilter: 100
+    ));
   }
 }

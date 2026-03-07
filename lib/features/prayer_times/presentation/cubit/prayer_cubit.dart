@@ -34,7 +34,7 @@ class PrayerTimesCubit extends Cubit<PrayerTimesStates> {
         coordinates = Coordinates(lat, lng);
       }
       final params = CalculationMethodParameters.egyptian();
-      params.madhab = Madhab.hanafi;
+      params.madhab = Madhab.shafi;
 
       DateTime date = DateTime.now();
 

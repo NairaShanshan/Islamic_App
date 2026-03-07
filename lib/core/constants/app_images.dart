@@ -8,6 +8,8 @@ class AppImages {
   static const String tasbih = 'assets/images/tasbih.png' ;
   static const String reciters = 'assets/images/man.png' ;
   static const String background = 'assets/images/background.png' ;
+  static const String mosque = 'assets/images/mosque.jpg' ;
+  static const String mosque2 = 'assets/images/mosque2.jpg' ;
 
 
 

@@ -8,7 +8,6 @@ import 'package:islamic_app/core/routes/routes.dart';
 import 'package:islamic_app/core/theme_cubit/theme_cubit.dart';
 import 'package:islamic_app/core/utils/app_colors.dart';
 import 'package:islamic_app/core/utils/text_styles.dart';
-import 'package:islamic_app/features/hijri_calendar/data/services/hijri_service.dart';
 import 'package:islamic_app/features/home/presentation/widgets/gridview.dart';
 import 'package:islamic_app/features/prayer_times/presentation/cubit/prayer_cubit.dart';
 import 'package:islamic_app/features/prayer_times/presentation/cubit/prayer_states.dart';
@@ -20,11 +19,6 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    final hijri = HijriService.getCurrentHijri();
-    final today = DateTime.now();
-
-
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +32,7 @@ class HomeScreen extends StatelessWidget {
       body: BlocBuilder<PrayerTimesCubit , PrayerTimesStates>(
         builder: (context , state) {
           if(state is PrayerTimesLoadingState) {
-            return Center(child: CircularProgressIndicator());
+            return Center(child: CircularProgressIndicator(color: AppColors.brownColor,));
           }
           if(state is PrayerTimesSuccessState){
             return SingleChildScrollView(
@@ -47,27 +41,6 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     PrayerHeader(prayerTimes: state.prayerTimes),
-                    Container(
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(
-                            HijriService.formatHijriDate(hijri),
-                            style: TextStyles.textStyle20,
-                          ),
-                          const Gap(6),
-                          Text(
-                            HijriService.formatGregorianDate(today),
-                            style: TextStyles.textStyle16,
-                          ),
-                        ],
-                      ),
-                    ),
                     Gap(25),
                     GestureDetector(
                       onTap: (){},

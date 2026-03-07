@@ -12,11 +12,11 @@ class PrayersList extends StatelessWidget {
 
     final prayers = [
       {'name': 'الفجر', 'time': prayerTimes.fajr , 'icon' : Icons.wb_cloudy},
-      {'name': 'الشروق', 'time': prayerTimes.sunrise , 'icon' : Icons.wb_cloudy_outlined},
+      {'name': 'الشروق', 'time': prayerTimes.sunrise , 'icon' : Icons.cloud_queue_rounded},
       {'name': 'الظهر', 'time': prayerTimes.dhuhr , 'icon' : Icons.sunny},
-      {'name': 'العصر', 'time': prayerTimes.asr , 'icon' : Icons.wb_sunny_sharp},
+      {'name': 'العصر', 'time': prayerTimes.asr , 'icon' : Icons.wb_sunny_outlined},
       {'name': 'المغرب', 'time': prayerTimes.maghrib , 'icon' : Icons.wb_twilight},
-      {'name': 'العشاء', 'time': prayerTimes.isha , 'icon' : Icons.nightlight},
+      {'name': 'العشاء', 'time': prayerTimes.isha , 'icon' : Icons.nightlight_outlined},
     ];
 
     return ListView.separated(
