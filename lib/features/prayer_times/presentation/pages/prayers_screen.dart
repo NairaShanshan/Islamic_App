@@ -42,8 +42,9 @@ class PrayersScreen extends StatelessWidget {
                     Gap(20),
                     PrayersList(prayerTimes: prayers,) ,
                     Gap(20),
-                    Text('السنن والنوافل' , style: TextStyles.textStyle24.copyWith(
-                      color: AppColors.brownColor
+                    Text('السنن' , style: TextStyles.textStyle24.copyWith(
+                      color: AppColors.brownColor ,
+                      fontWeight: FontWeight.bold
                     ),) ,
                     Gap(20),
                     NawafilList() ,

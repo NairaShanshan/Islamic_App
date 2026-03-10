@@ -54,14 +54,9 @@ class _PrayerHeaderState extends State<PrayerHeader> {
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: AppColors.brownColor),
         image: DecorationImage(
-          image: AssetImage(AppImages.mosque),
-          fit: BoxFit.cover,
-          // colorFilter: ColorFilter.mode(
-          //  // Colors.black.withOpacity(0.6),
-          //  // BlendMode.softLight,
-          // ),
+          image: AssetImage(AppImages.mosque3),
+          fit: BoxFit.fill,
 
         ),
       ),
@@ -72,22 +67,26 @@ class _PrayerHeaderState extends State<PrayerHeader> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined),
+                  Icon(Icons.calendar_month_outlined , color: AppColors.accentColor,),
                   Gap(5),
                   Text(
                     HijriService.formatHijriDate(hijri),
-                    style: TextStyles.textStyle20,
+                    style: TextStyles.textStyle20.copyWith(
+                      color: Colors.white
+                    ),
                   ),
                 ],
               ),
               const Gap(5),
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined),
+                  Icon(Icons.calendar_month_outlined , color: AppColors.accentColor,),
                   Gap(5),
                   Text(
                     HijriService.formatGregorianDate(DateTime.now()),
-                    style: TextStyles.textStyle20,
+                    style: TextStyles.textStyle20.copyWith(
+                      color: Colors.white
+                    ),
                   ),
                 ],
               ),

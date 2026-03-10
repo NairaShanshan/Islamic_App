@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hijri_date/hijri_date.dart';
+import 'package:islamic_app/core/utils/app_colors.dart';
 import 'package:islamic_app/core/utils/text_styles.dart';
 import 'package:islamic_app/features/hijri_calendar/presentation/cubit/calendar_cubit.dart';
 
@@ -22,9 +23,9 @@ class DayItem extends StatelessWidget {
     Color bgColor = Colors.transparent;
 
     if (isSelected) {
-      bgColor = Colors.green;
+      bgColor = AppColors.brownColor;
     } else if (isToday) {
-      bgColor = Colors.grey.shade300;
+      bgColor = AppColors.cardColor;
     }
 
     return GestureDetector(

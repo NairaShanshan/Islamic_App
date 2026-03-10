@@ -1,6 +1,7 @@
 import 'package:adhan_dart/adhan_dart.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:islamic_app/core/utils/app_colors.dart';
 
 import 'package:islamic_app/features/prayer_times/presentation/widgets/prayer_utils.dart';
 
@@ -23,11 +24,12 @@ class PrayerCurrentSection extends StatelessWidget {
       children: [
         Row(
           children: [
-            Icon(PrayerUtils.getPrayerIcon(currentPrayer), size: 28),
+            Icon(PrayerUtils.getPrayerIcon(currentPrayer), size: 28 , color: AppColors.accentColor,),
             Text(
               PrayerUtils.getPrayerName(currentPrayer),
               style: TextStyles.textStyle24.copyWith(
-                fontWeight: FontWeight.bold
+                fontWeight: FontWeight.bold ,
+                color: Colors.white
               ),
             ),
           ],
@@ -35,7 +37,10 @@ class PrayerCurrentSection extends StatelessWidget {
         Gap(8),
         Text(
           PrayerUtils.formatTime(currentPrayerTime),
-          style: TextStyles.textStyle24,
+          style: TextStyles.textStyle30.copyWith(
+            color: Colors.white ,
+            fontWeight: FontWeight.bold
+          ),
         ),
       ],
     );

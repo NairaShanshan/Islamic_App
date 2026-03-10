@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:islamic_app/core/utils/app_colors.dart';
 import 'package:islamic_app/core/utils/text_styles.dart';
 
 class NawafilList extends StatelessWidget {
@@ -9,7 +10,7 @@ class NawafilList extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final nawafils = [
-      {'name': 'الفجر', 'count': '2 قبل الفريضه' },
+      {'name': 'الفجر', 'count': '2 قبل الفريضه' ,   },
       {'name': 'الظهر', 'count': '4 قبل الفريضه و 2 بعدها'},
       {'name': 'العصر', 'count': 'لا يوجد'},
       {'name': 'المغرب', 'count': '2 بعد الفريضه'},
@@ -26,11 +27,20 @@ class NawafilList extends StatelessWidget {
           padding: EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10) ,
+            border: Border.all(
+              color: AppColors.cardColor
+            )
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(nawafil['name'] as String , style: TextStyles.textStyle20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(nawafil['name'] as String , style: TextStyles.textStyle20,),
+                  //Text(nawafil['count'] as String ,style: TextStyles.textStyle20, ),
+                ],
+              ),
               Text(nawafil['count'] as String ,style: TextStyles.textStyle20, ),
             ],
           ),

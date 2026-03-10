@@ -19,14 +19,17 @@ class CalendarScreen extends StatelessWidget {
       body: BlocBuilder<CalendarCubit, CalendarStates>(
         builder: (context, state) {
           if (state is CalendarLoadedState) {
-            return Column(
-              children: [
-                CalendarHeader(state: state),
-                WeekDaysRow(),
-                Expanded(
-                  child: DaysGrid(state: state),
-                ),
-              ],
+            return Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
+                children: [
+                  CalendarHeader(state: state),
+                  WeekDaysRow(),
+                  Expanded(
+                    child: DaysGrid(state: state),
+                  ),
+                ],
+              ),
             );
           }
 

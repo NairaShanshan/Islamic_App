@@ -10,6 +10,7 @@ class AppImages {
   static const String background = 'assets/images/background.png' ;
   static const String mosque = 'assets/images/mosque.jpg' ;
   static const String mosque2 = 'assets/images/mosque2.jpg' ;
+  static const String mosque3 = 'assets/images/mosque3.PNG' ;
 
 
 

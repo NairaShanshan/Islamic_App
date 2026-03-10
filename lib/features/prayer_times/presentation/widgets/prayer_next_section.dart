@@ -26,14 +26,18 @@ class PrayerNextSection extends StatelessWidget {
 
         Text(
           "متبقي على ${PrayerUtils.getPrayerName(nextPrayer)}",
-          style: TextStyles.textStyle20,
+          style: TextStyles.textStyle20.copyWith(
+            color: Colors.white
+          ),
         ),
 
         const Gap(10),
 
         Text(
           PrayerUtils.formatRemaining(remaining),
-          style: TextStyles.textStyle20,
+          style: TextStyles.textStyle20.copyWith(
+              color: Colors.white
+          ),
         ),
 
       ],
