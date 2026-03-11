@@ -15,9 +15,8 @@ import 'package:islamic_app/features/hijri_calendar/presentation/cubit/calendar_
 import 'package:islamic_app/features/hijri_calendar/presentation/pages/calendar_screen.dart';
 import 'package:islamic_app/features/home/presentation/pages/home_screen.dart';
 import 'package:islamic_app/features/prayer_times/presentation/pages/prayers_screen.dart';
+import 'package:islamic_app/features/sebha/presentation/cubit/sebha_cubit.dart';
 import 'package:islamic_app/features/sebha/presentation/pages/sebha_screen.dart';
-
-
 
 class Routes {
   static const String home = '/';
@@ -62,7 +61,13 @@ class Routes {
           return AzkarDetailsScreen(azkarList: azkarList);
         },
       ),
-      GoRoute(path: sebha, builder: (context, state) => SebhaScreen()),
+      GoRoute(
+        path: sebha,
+        builder: (context, state) => BlocProvider(
+          create: (context) => SebhaCubit(),
+          child: SebhaScreen(),
+        ),
+      ),
       GoRoute(
         path: calender,
         builder: (context, state) => BlocProvider(
@@ -70,10 +75,7 @@ class Routes {
           child: CalendarScreen(),
         ),
       ),
-      GoRoute(
-        path: prayers,
-        builder: (context, state) => PrayersScreen(),
-      ),
+      GoRoute(path: prayers, builder: (context, state) => PrayersScreen()),
     ],
   );
 }
