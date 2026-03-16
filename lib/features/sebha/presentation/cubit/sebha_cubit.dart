@@ -10,7 +10,7 @@ class SebhaCubit extends Cubit<SebhaStates> {
     SebhaModel(zekr: 'الحمد الله', count: 33) ,
     SebhaModel(zekr: 'لا اله الا الله', count: 33) ,
     SebhaModel(zekr: '  الله اكبر ', count: 33) ,
-    SebhaModel(zekr: 'لا حول و لا قوه الا بالله', count: 33) ,
+    SebhaModel(zekr: 'لا حول و لا قوه الا بالله العلى العظيم', count: 33) ,
     SebhaModel(zekr: 'سبحان الله و بحمده سبحان الله العظيم', count: 33) ,
     SebhaModel(zekr: 'استغفر الله العظيم واتوب اليه', count: 33) ,
     SebhaModel(zekr: 'اللهم صلى وسلم وبارك على سيدنا محمد', count: 33) ,
