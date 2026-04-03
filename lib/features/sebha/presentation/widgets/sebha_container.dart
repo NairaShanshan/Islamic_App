@@ -69,7 +69,7 @@ class SebhaContainer extends StatelessWidget {
               ),
               child: IconButton(
                 onPressed: previousButton,
-                icon: Center(child: Icon(Icons.arrow_forward_ios_rounded)),
+                icon: Icon(Icons.arrow_forward_ios_rounded),
               ),
             ),
           ],

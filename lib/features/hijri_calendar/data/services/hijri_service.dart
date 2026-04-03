@@ -43,4 +43,15 @@ class HijriService {
         ..hDay = index + 1;
     });
   }
+
+
+  static int getFirstDayWeekday(HijriDate date) {
+
+    final firstDay = HijriDate.fromHijri(date.hYear, date.hMonth, 1);
+
+    int  weekday = firstDay.wkDay ?? 1;
+    return (weekday + 1) % 7;
+  }
+
+
 }

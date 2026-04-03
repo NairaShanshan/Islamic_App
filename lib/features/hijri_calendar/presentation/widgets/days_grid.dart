@@ -14,10 +14,11 @@ class DaysGrid extends StatelessWidget {
     HijriService.generateMonthDays(state.currentMonth);
 
     final today = HijriService.getCurrentHijri();
+    final int offset = HijriService.getFirstDayWeekday(state.currentMonth);
 
     return GridView.builder(
       padding: const EdgeInsets.all(8),
-      itemCount: days.length,
+      itemCount: days.length + offset,
       gridDelegate:
       const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 7,
@@ -25,7 +26,10 @@ class DaysGrid extends StatelessWidget {
         crossAxisSpacing: 6,
       ),
       itemBuilder: (context, index) {
-        final day = days[index];
+        if (index < offset) {
+          return const SizedBox.shrink();
+        }
+        final day = days[index - offset];
 
         final isToday =
             day.hDay == today.hDay &&

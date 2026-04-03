@@ -36,15 +36,29 @@ class _PrayerHeaderState extends State<PrayerHeader> {
 
   @override
   Widget build(BuildContext context) {
-    final currentPrayer = widget.prayerTimes.currentPrayer(
+    var currentPrayer = widget.prayerTimes.currentPrayer(
       date: DateTime.now(),
     );
 
-    final currentPrayerTime = widget.prayerTimes.timeForPrayer(currentPrayer);
+    if (currentPrayer == Prayer.ishaBefore) {
 
-    final nextPrayer = widget.prayerTimes.nextPrayer();
+      currentPrayer = Prayer.isha;
+    }
 
-    final nextPrayerTime = widget.prayerTimes.timeForPrayer(nextPrayer);
+    DateTime currentPrayerTime = widget.prayerTimes.timeForPrayer(currentPrayer);
+
+    var  nextPrayer = widget.prayerTimes.nextPrayer(date: DateTime.now());
+
+    if (nextPrayer == Prayer.fajrAfter) {
+      nextPrayer = Prayer.fajr;
+    }
+
+    DateTime nextPrayerTime = widget.prayerTimes.timeForPrayer(nextPrayer);
+
+    if (nextPrayerTime.isBefore(DateTime.now())) {
+
+      nextPrayerTime = nextPrayerTime.add(const Duration(days: 1));
+    }
 
     final remaining = nextPrayerTime.difference(DateTime.now());
 

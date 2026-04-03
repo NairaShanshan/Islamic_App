@@ -41,8 +41,8 @@ class BeadsArcWidget extends StatelessWidget {
         shape: BoxShape.circle,
         gradient: RadialGradient(
           colors: [
-            isActive ? Colors.white :  AppColors.brownColor,
-             AppColors.brownColor,
+            isActive ? Colors.white :  AppColors.softBrown,
+             AppColors.softBrown,
           ],
           center: const Alignment(-0.3, -0.3),
         ),
