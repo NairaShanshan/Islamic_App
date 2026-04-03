@@ -7,42 +7,49 @@ class PrayerUtils {
     switch (prayer) {
       case Prayer.fajr:
         return "الفجر";
+      case Prayer.sunrise:
+        return "الشروق";
       case Prayer.dhuhr:
         return "الظهر";
       case Prayer.asr:
         return "العصر";
       case Prayer.maghrib:
         return "المغرب";
-      case Prayer.ishaBefore:
-        return "العشاء " ;
       case Prayer.isha:
-        return "العشاء";
-      default:
-        return "";
+      case Prayer.ishaBefore :
+        return "العشاء " ;
+      case Prayer.fajrAfter :
+        return "الفجر";
+
     }
   }
 
   static IconData getPrayerIcon(Prayer prayer) {
     switch (prayer) {
       case Prayer.fajr:
+      case Prayer.fajrAfter:
         return Icons.wb_twilight;
+      case Prayer.sunrise:
+        return Icons.wb_sunny_outlined;
       case Prayer.dhuhr:
         return Icons.wb_sunny;
       case Prayer.asr:
         return Icons.sunny;
       case Prayer.maghrib:
         return Icons.nightlight_round;
+      case Prayer.isha:
       case Prayer.ishaBefore :
         return Icons.nightlight_outlined ;
-      case Prayer.isha:
-        return Icons.nightlight_outlined;
-      default:
-        return Icons.access_time;
+
     }
   }
 
   static String formatTime(DateTime time) {
-    return "${time.hour}:${time.minute.toString().padLeft(2, '0')}";
+    final hour = time.hour > 12 ? time.hour - 12 : (time.hour == 0 ? 12 : time.hour);
+    final minute = time.minute.toString().padLeft(2, '0');
+    final period = time.hour >= 12 ? 'م' : 'ص';
+
+    return "$hour:$minute $period";
   }
 
   static String formatRemaining(Duration duration) {

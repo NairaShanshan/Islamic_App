@@ -63,8 +63,6 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ) ,
                     Gap(25),
-                    GridviewHome(),
-                    Gap(25),
                     GestureDetector(
                       onTap: (){
                         pushTo(context, Routes.calender) ;
@@ -87,6 +85,11 @@ class HomeScreen extends StatelessWidget {
                         ),
                       ),
                     ) ,
+                    Gap(25),
+                    GridviewHome(),
+                    Gap(25),
+
+
 
 
 

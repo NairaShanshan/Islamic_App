@@ -36,29 +36,20 @@ class _PrayerHeaderState extends State<PrayerHeader> {
 
   @override
   Widget build(BuildContext context) {
-    var currentPrayer = widget.prayerTimes.currentPrayer(
+    final currentPrayer = widget.prayerTimes.currentPrayer(
       date: DateTime.now(),
     );
 
-    if (currentPrayer == Prayer.ishaBefore) {
+    DateTime? currentPrayerDateTime = widget.prayerTimes.timeForPrayer(
+      currentPrayer,
+    );
 
-      currentPrayer = Prayer.isha;
-    }
+    final currentPrayerTime = currentPrayerDateTime.toLocal();
+    final nextPrayer = widget.prayerTimes.nextPrayer(date: DateTime.now());
 
-    DateTime currentPrayerTime = widget.prayerTimes.timeForPrayer(currentPrayer);
+    final nextPrayerDateTime = widget.prayerTimes.timeForPrayer(nextPrayer);
 
-    var  nextPrayer = widget.prayerTimes.nextPrayer(date: DateTime.now());
-
-    if (nextPrayer == Prayer.fajrAfter) {
-      nextPrayer = Prayer.fajr;
-    }
-
-    DateTime nextPrayerTime = widget.prayerTimes.timeForPrayer(nextPrayer);
-
-    if (nextPrayerTime.isBefore(DateTime.now())) {
-
-      nextPrayerTime = nextPrayerTime.add(const Duration(days: 1));
-    }
+    final nextPrayerTime = nextPrayerDateTime.toLocal();
 
     final remaining = nextPrayerTime.difference(DateTime.now());
 
@@ -71,7 +62,6 @@ class _PrayerHeaderState extends State<PrayerHeader> {
         image: DecorationImage(
           image: AssetImage(AppImages.mosque3),
           fit: BoxFit.fill,
-
         ),
       ),
       child: Column(
@@ -81,26 +71,28 @@ class _PrayerHeaderState extends State<PrayerHeader> {
             children: [
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined , color: AppColors.accentColor,),
+                  Icon(
+                    Icons.calendar_month_outlined,
+                    color: AppColors.accentColor,
+                  ),
                   Gap(5),
                   Text(
                     HijriService.formatHijriDate(hijri),
-                    style: TextStyles.textStyle20.copyWith(
-                      color: Colors.white
-                    ),
+                    style: TextStyles.textStyle20.copyWith(color: Colors.white),
                   ),
                 ],
               ),
               const Gap(5),
               Row(
                 children: [
-                  Icon(Icons.calendar_month_outlined , color: AppColors.accentColor,),
+                  Icon(
+                    Icons.calendar_month_outlined,
+                    color: AppColors.accentColor,
+                  ),
                   Gap(5),
                   Text(
                     HijriService.formatGregorianDate(DateTime.now()),
-                    style: TextStyles.textStyle20.copyWith(
-                      color: Colors.white
-                    ),
+                    style: TextStyles.textStyle20.copyWith(color: Colors.white),
                   ),
                 ],
               ),

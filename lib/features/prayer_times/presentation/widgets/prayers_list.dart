@@ -3,6 +3,7 @@ import 'package:gap/gap.dart';
 import 'package:islamic_app/core/utils/app_colors.dart';
 import 'package:islamic_app/core/utils/text_styles.dart';
 import 'package:adhan_dart/adhan_dart.dart';
+import 'package:islamic_app/features/prayer_times/presentation/widgets/prayer_utils.dart';
 
 class PrayersList extends StatelessWidget {
   final PrayerTimes prayerTimes;
@@ -43,7 +44,7 @@ class PrayersList extends StatelessWidget {
               Icon(prayer['icon'] as IconData ,),
               Text(prayer['name'] as String, style: TextStyles.textStyle20),
               Text(
-                '${time.toLocal().hour.toString().padLeft(2, '0')}:${time.minute.toString().padLeft(2, '0')}',
+                PrayerUtils.formatTime(time.toLocal()),
                 style: TextStyles.textStyle20,
               )
             ],
